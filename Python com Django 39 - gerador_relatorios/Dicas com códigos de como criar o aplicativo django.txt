@@ -1,0 +1,20 @@
+Criar um novo projeto Django
+django-admin startproject gerador_relatorios
+
+Criar um novo aplicativo Django
+cd gerador_relatorios
+python manage.py startapp relatorios
+
+Criar e aplicar as migrações do banco de dados
+python manage.py makemigrations
+python manage.py migrate
+
+Criar um superusuário para acessar o admin
+python manage.py createsuperuser
+
+Executar o servidor de desenvolvimento
+python manage.py runserver
+
+Ao conectar o servidor, acesse:
+http:127.0.0.1:8000
+

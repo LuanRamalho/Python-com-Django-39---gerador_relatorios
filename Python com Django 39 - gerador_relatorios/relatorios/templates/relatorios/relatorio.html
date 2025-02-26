@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório de Serviços</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 900px;
+            margin: 30px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0f7e0;
+        }
+
+        button {
+            display: block;
+            width: 80%;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Relatório de Serviços</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Data do Serviço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servico in servicos %}
+                <tr>
+                    <td>{{ servico.nome }}</td>
+                    <td>{{ servico.categoria }}</td>
+                    <td>{{ servico.preco }}</td>
+                    <td>{{ servico.data_servico|date:"d/m/Y" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="btn-container">
+        <button onclick="window.location.href='{% url 'exportar_excel' %}'">Exportar Excel</button>
+        <button onclick="window.location.href='{% url 'exportar_csv' %}'">Exportar CSV</button>
+        <button onclick="window.location.href='{% url 'exportar_pdf' %}'">Exportar PDF</button>
+    </div>
+</body>
+</html>
